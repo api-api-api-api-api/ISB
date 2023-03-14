@@ -394,7 +394,7 @@ header("Access-Control-Allow-Headers: X-Requested-With");
 			$this->Session->delete('dpfdpl_arcoId');	
 			$this->Session->delete('dpfdpl_logistikState');
 			$this->Session->delete('dpfdpl_extAppMenu');
-		header('location:../ISBerno');exit();
+		header('location:../ISB');exit();
 		}
 	
 }

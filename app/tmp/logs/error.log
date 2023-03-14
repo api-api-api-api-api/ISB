@@ -54923,3 +54923,201 @@ Request URL: /ISB/css/img/bgimglittle2.png
 Stack Trace:
 #0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2023-03-14 04:07:46 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:09:44 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:10:40 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:11:44 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:11:45 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:12:01 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /ISB/css/img/bgimglittle2.png
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:12:01 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:12:54 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:12:57 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:13:02 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:13:29 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:13:48 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:14:15 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:14:25 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:14:54 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:15:12 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:15:53 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:19:13 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:30:05 Error: [MissingControllerException] Controller class WsController could not be found.
+Exception Attributes: array (
+  'class' => 'WsController',
+  'plugin' => NULL,
+)
+Request URL: /ISB//ws
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:31:11 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /ISB/css/img/bgimglittle2.png
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:35:02 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /ISB/css/img/bgimglittle2.png
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-14 04:40:00 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /ISB/css/img/bgimglittle2.png
+Stack Trace:
+#0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
