@@ -1,6 +1,6 @@
 var serial=0;
 var curHal=1;
-var onloadData=getDataNegara();
+
 //console.log(onloadData)
 $(document).ready(function(e){
    $("#btnAddDivisi").on('click',function(e){
@@ -56,7 +56,7 @@ $(document).ready(function(e){
             type:"POST",
             // dataType:"Text",
             success:function(result){
-                console.log(result);return
+                // console.log(result);return
                 result=result.split("^");
                 var hal=result[0];
                 //console.log(hal);return
@@ -76,31 +76,15 @@ $(document).ready(function(e){
    onLoadHandler()
 })
 
-function onLoadHandler(){
-    $("#txtNegara").html(onloadData);
-    $("#inpNegara").html(onloadData);
-    getData(1)
-}
 function getData(hal){
-    // var txtNegara=document.getElementById('txtNegara').value
-    // var txtPropinsi=document.getElementById('txtProvinsi').value
-    // var txtKota=document.getElementById('txtKota').value
-    // var txtNamaKecamatan=document.getElementById('txtNamaKecamatan').value
-    // var txtStatus   = document.getElementById('txtStatus').value;
-
     var url="Masterdivisis/getData";
     $.ajax({
         url:url,
         type:"POST",
         dataType:"Text",
         data:({hal:hal,
-            // txtNegara:txtNegara,
-            // txtPropinsi:txtPropinsi,
-            // txtKota:txtKota,
-            // txtNamaKecamatan:txtNamaKecamatan,
-            // txtStatus:txtStatus,
             fungsi:'getData'}),
-        success:function(returnVal){
+            success:function(returnVal){
             $("#setHal").val(hal);
             //console.log(returnVal)
             returnVal=returnVal.split("^");
@@ -114,72 +98,4 @@ function getData(hal){
             }
         }
     })
-}
-
- function getDataNegara(){
-    var url = 'Masterdistricts/getDataNegara';
-    var dataCallback;
-        $.ajax({
-            url: url,
-            type: "POST",
-            dataType:"text",
-            async:false,
-            success: function(result){
-            //console.log(result);return
-            dataCallback=result;
-            //jsonVal=JSON.parse(result);
-            //console.log(jsonVal);return
-        }
-    });	
-   return dataCallback; 
-}
-
-function getProvinsi(idNegara,tipe){
-    if(tipe=='filter'){
-        $("#txtProvinsi").html(getDataProvinsi(idNegara))
-    }else{
-        $("#inpProvinsi").html(getDataProvinsi(idNegara))
-    }
-}
-
-function getKota(idProvinsi,tipe){
-    if(tipe=='filter'){
-        //console.log(getDataKota(idProvinsi))
-        $("#txtKota").html(getDataKota(idProvinsi))
-    }else{
-        $("#inpKota").html(getDataKota(idProvinsi))
-    }
-}
-
-function getDataProvinsi(idNegara){
-    //alert(idNegara)
-    //alert(idNegara);return
-    var dataProvinsi
-    $.ajax({
-        url:'Masterdistricts/getDataProvinsi',
-        type:'POST',
-        dataType:'text',
-        data:({idNegara:idNegara}),
-        async:false,
-        success:function(returnVal){
-            dataProvinsi=returnVal
-            //console.log(dataProvinsi)
-        }
-    })
-   return dataProvinsi
-}
-function getDataKota(idProvinsi){
-    var dataKota
-    $.ajax({
-        url:'Masterdistricts/getDataKota',
-        type:'POST',
-        dataType:'text',
-        data:({idProvinsi:idProvinsi}),
-        async:false,
-        success:function(returnVal){
-            dataKota=returnVal
-            //console.log(dataKota)
-        }
-    })
-    return dataKota
 }

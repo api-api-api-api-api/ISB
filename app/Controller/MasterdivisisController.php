@@ -7,76 +7,9 @@ class MasterdivisisController extends AppController {
          echo $this->Function->cekSession($this);
     }
 
-    public function getDataNegara(){
-        $this->autoRender = false;
-        $this->loadModel('User');
-        $txtNegara='';
-       
-		$hasil=$this->User->query("SELECT idNegara,namaNegara FROM internationalbusiness.countries WHERE `status`='aktif' ORDER BY namaNegara");
-        
-		$txtNegara="<option value=''>choose a country or its equivalent</option>";
-		foreach($hasil as $country){
-            // var_dump($country);return;
-			$txtNegara.="<option value='".$country['countries']['idNegara']."'>".$country['countries']['namaNegara']."</option>";
-		}				
-		echo $txtNegara;	
-    }
-
-    public function getDataProvinsi(){
-        $this->autoRender = false;
-        $this->loadModel('User');
-        //var_dump($_POST);return;
-        $txtProvinsi='';
-        $idNegara=$_POST['idNegara'];
-        //$idProvinsi=$_POST['id'];
-        //$selected='';
-		$hasil=$this->User->query("SELECT idProvinsi,namaProvinsi FROM internationalbusiness.provinces WHERE idNegara='$idNegara' AND `status`='aktif' ORDER BY namaProvinsi" );
-        
-		$txtProvinsi="<option value=''>choose a province or its equivalent</option>";
-		foreach($hasil as $provinsi){
-           
-			$txtProvinsi.="<option value='".$provinsi['provinces']['idProvinsi']."' >".$provinsi['provinces']['namaProvinsi']."</option>";
-		}				
-		echo $txtProvinsi;	
-    }
-
-    public function getDataKota(){
-        $this->autoRender = false;
-        $this->loadModel('User');
-        //var_dump($_POST);return;
-        $txtKota='';
-        $idProvinsi=$_POST['idProvinsi'];
-        //$idProvinsi=$_POST['id'];
-        //$selected='';
-		$hasil=$this->User->query("SELECT id,namaKota FROM internationalbusiness.citys WHERE idProvinsi='$idProvinsi' AND isActive='true' ORDER BY namaKota" );
-        
-		$txtKota="<option value=''>choose a city or its equivalent</option>";
-		foreach($hasil as $kota){
-           
-			$txtKota.="<option value='".$kota['citys']['id']."' >".$kota['citys']['namaKota']."</option>";
-		}				
-		echo $txtKota;	
-    }
-
-
     public function getData(){
         $this->autoRender = false;
         $this->loadModel('User');
-        //filter
-
-        // $txtNegara=$_POST['txtNegara'];
-        // $txtPropinsi=$_POST['txtPropinsi'];
-        // $txtKota=$_POST['txtKota'];
-        // $txtNamaKecamatan=$_POST['txtNamaKecamatan'];
-        // $txtStatus=$_POST['txtStatus'];
-
-
-        
-        if(!empty($txtPropinsi)){$txtPropinsi="  AND prov.idProvinsi = '$txtPropinsi' ";}
-        if(!empty($txtNegara)){$txtNegara="  AND neg.idNegara = '$txtNegara' ";}
-        if(!empty($txtKota)){$txtKota="  AND kota.id = '$txtKota' ";}
-        if(!empty($txtNamaKecamatan)){$txtNamaKecamatan="  AND kec.namaDistrik LIKE '%$txtKota%' ";}
-
 
         $hm=$_POST['hal'];
         $fungsi=$_POST['fungsi'];

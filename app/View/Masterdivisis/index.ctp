@@ -1,8 +1,8 @@
 <?php
-    // echo $this->Html->script('h1masterdistrict.js');
     echo $this->Html->script('h1masterdivisi.js');
     echo $this->Html->script('bundle.min.js');       
 ?>
+
 <style>
  /* Select Pure Auto complate */
     .select-wrapper {margin: auto; max-width: 500px;width: calc(100% - 40px);}
@@ -21,42 +21,7 @@
     .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {width: 49%;color:black;height:20px;}
     /* End Select Pure Auto complate */
 </style>
-<div class="row">
-    <blockquote>Data Master divisi or its equivalent to this </blockquote>
-    <div class="form-group"><label class="control-label"> <i class="fa fa-search fa-fw"></i> FILTER BY:  </label></div>
-    <div class="col-md-2">
-        <div class="row">
-            <div id='test'></div>
-            <div>
-                <div class="form-group">
-                    <select name="txtNegara" id="txtNegara" class="form-control" style="width:250px;margin-bottom:0;font-size:11px;" onchange="getProvinsi(this.value,'filter')">
-                        <option value="">country or its equivalent</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select name="txtProvinsi" id="txtProvinsi" class="form-control" style="width:250px;margin-bottom:0;font-size:11px;" onchange="getKota(this.value,'filter')">
-                        <option value="">province or its equivalent</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select name="txtKota" id="txtKota" class="form-control" style="width:250px;margin-bottom:0;font-size:11px;" onchange="getData(1)">
-                        <option value="">city or its equivalent</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="txtNamaKecamatan" id="txtNamaKecamatan" class="form-control" style="width:250px;margin-bottom:0;font-size:11px;" placeholder="Search for sub-district" onkeyup="if(event.keyCode === 13){getData(1)}">
-                </div>
-                <div class="form-group">
-                    <select name="txtStatus" id="txtStatus" class="form-control" style="width:250px;margin-bottom:0;font-size:11px;">
-                        <option value="true">ACTIVE</option>
-                        <option value="false">NON ACTIVE</option>
-                    </select>
-                </div>
-                    <button type="button"class='btn btn-default btn-sm' style="margin-bottom:0" onclick='getData(1)'> <i class="fa fa-search fa-fw"></i> SEARCH</button>
-            </div>
-        </div>
-    </div> 
-</div>
+
 <div class="row">
     <hr>
     <div class="col-md-8">
@@ -111,7 +76,7 @@
                         <div class="col-md-12 ">
                             <div class="panel panel-default" style="min-width:500px;">
                                 <div class="panel-body">
-                                    <input type="text" name="id" id="idDivisi">
+                                    <input type="text" name="idDivisi" id="idDivisi">
                                     <!-- <p class="bg-info" style="padding: 15px;font-weight:bold;font-size:14px;" id="txtNoteReturn">test</p> -->
                                     <div class="form-horizontal">
                                         <div class="col-md-12">

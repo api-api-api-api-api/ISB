@@ -57171,3 +57171,115 @@ Request URL: /ISB/css/img/bgimglittle2.png
 Stack Trace:
 #0 C:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2023-03-15 14:43:06 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1049] Unknown database \'dpfdplnew\'',
+  'enabled' => true,
+)
+Request URL: /ISB/getSetting
+Stack Trace:
+#0 D:\xampp\htdocs\ISB\lib\Cake\Model\Datasource\DboSource.php(271): Mysql->connect()
+#1 D:\xampp\htdocs\ISB\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3646): ConnectionManager::getDataSource('default')
+#3 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(1162): Model->setDataSource('default')
+#4 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3673): Model->setSource('settings')
+#5 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3475): Model->getDataSource()
+#6 D:\xampp\htdocs\ISB\app\Controller\PagesController.php(84): Model->query('Select * from s...')
+#7 [internal function]: PagesController->getSetting()
+#8 D:\xampp\htdocs\ISB\lib\Cake\Controller\Controller.php(491): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#9 D:\xampp\htdocs\ISB\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 D:\xampp\htdocs\ISB\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#11 D:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-03-15 14:43:16 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1049] Unknown database \'dpfdplnew\'',
+  'enabled' => true,
+)
+Request URL: /ISB/logProcess
+Stack Trace:
+#0 D:\xampp\htdocs\ISB\lib\Cake\Model\Datasource\DboSource.php(271): Mysql->connect()
+#1 D:\xampp\htdocs\ISB\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3646): ConnectionManager::getDataSource('default')
+#3 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(1162): Model->setDataSource('default')
+#4 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3673): Model->setSource('users')
+#5 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3040): Model->getDataSource()
+#6 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3012): Model->_readDataSource('all', Array)
+#7 D:\xampp\htdocs\ISB\app\Model\User.php(22): Model->find('all', Array)
+#8 D:\xampp\htdocs\ISB\app\Controller\PagesController.php(324): User->login('admin', 'limited123')
+#9 [internal function]: PagesController->logProcess()
+#10 D:\xampp\htdocs\ISB\lib\Cake\Controller\Controller.php(491): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#11 D:\xampp\htdocs\ISB\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 D:\xampp\htdocs\ISB\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#13 D:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-03-15 14:43:19 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1049] Unknown database \'dpfdplnew\'',
+  'enabled' => true,
+)
+Request URL: /ISB/getSetting
+Stack Trace:
+#0 D:\xampp\htdocs\ISB\lib\Cake\Model\Datasource\DboSource.php(271): Mysql->connect()
+#1 D:\xampp\htdocs\ISB\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3646): ConnectionManager::getDataSource('default')
+#3 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(1162): Model->setDataSource('default')
+#4 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3673): Model->setSource('settings')
+#5 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3475): Model->getDataSource()
+#6 D:\xampp\htdocs\ISB\app\Controller\PagesController.php(84): Model->query('Select * from s...')
+#7 [internal function]: PagesController->getSetting()
+#8 D:\xampp\htdocs\ISB\lib\Cake\Controller\Controller.php(491): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#9 D:\xampp\htdocs\ISB\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 D:\xampp\htdocs\ISB\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#11 D:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-03-15 14:43:39 Error: [MissingControllerException] Controller class MasterdivisiController could not be found.
+Exception Attributes: array (
+  'class' => 'MasterdivisiController',
+  'plugin' => NULL,
+)
+Request URL: /ISB/masterdivisi
+Stack Trace:
+#0 D:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-03-15 14:44:19 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [1049] Unknown database \'dpfdplnew\'',
+  'enabled' => true,
+)
+Request URL: /ISB/getSetting
+Stack Trace:
+#0 D:\xampp\htdocs\ISB\lib\Cake\Model\Datasource\DboSource.php(271): Mysql->connect()
+#1 D:\xampp\htdocs\ISB\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3646): ConnectionManager::getDataSource('default')
+#3 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(1162): Model->setDataSource('default')
+#4 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3673): Model->setSource('settings')
+#5 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3475): Model->getDataSource()
+#6 D:\xampp\htdocs\ISB\app\Controller\PagesController.php(84): Model->query('Select * from s...')
+#7 [internal function]: PagesController->getSetting()
+#8 D:\xampp\htdocs\ISB\lib\Cake\Controller\Controller.php(491): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#9 D:\xampp\htdocs\ISB\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 D:\xampp\htdocs\ISB\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#11 D:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-03-15 14:44:40 Error: [MissingTableException] Table settings for model Setting was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'settings',
+  'class' => 'Setting',
+  'ds' => 'default',
+)
+Request URL: /ISB/getSetting
+Stack Trace:
+#0 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3673): Model->setSource('settings')
+#1 D:\xampp\htdocs\ISB\lib\Cake\Model\Model.php(3475): Model->getDataSource()
+#2 D:\xampp\htdocs\ISB\app\Controller\PagesController.php(84): Model->query('Select * from s...')
+#3 [internal function]: PagesController->getSetting()
+#4 D:\xampp\htdocs\ISB\lib\Cake\Controller\Controller.php(491): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#5 D:\xampp\htdocs\ISB\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#6 D:\xampp\htdocs\ISB\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#7 D:\xampp\htdocs\ISB\app\webroot\index.php(107): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#8 {main}
