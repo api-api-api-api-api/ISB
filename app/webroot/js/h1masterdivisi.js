@@ -5,107 +5,69 @@ var onloadData=getDataNegara();
 $(document).ready(function(e){
    $("#btnAddDivisi").on('click',function(e){
         e.preventDefault();
-        $("#myModalLabel").text("ADD DISTRICT OR ITS EQUIVALENT TO THIS");
-        $("#idKecamatan").val("");
-        $("#inpNegara").val("");
-        $("#inpKota").val("")
-        $("#inpNegara").val("");
-        $("#inpProvinsi").val("");
-        $("#inpNamaKecamatan").val("");
-        $("#inpStatus").val("true");
-        $("#inpNegara").prop('disabled',false);
-        $("#inpProvinsi").prop('disabled',false);
-        $("#modaldistrict").modal('show')
+        $("#myModalLabel").text("ADD DIVISI OR ITS EQUIVALENT TO THIS");
+        $("#idDivisi").val("");
+        $("#inpDivisi").val("");
+        $("#inpGroupDivisi").val("")
+        $("#modaldivisi").modal('show')
    })
 
-   $("#tableMaintenanceDistrict tbody").on('click','.edtBtn',function(e){
+   $("#tableMaintenanceDivisi tbody").on('click','.edtBtn',function(e){
         e.preventDefault();
-        $("#myModalLabel").text("UPDATE DISTRICT");
-        var idKec=$(this).attr('data-id');
-        var idProv=$(this).attr('data-prov');
-        var idNeg=$(this).attr('data-neg');
-        var idKota=$(this).attr('data-kota');
-        var namaKec=$(this).attr('data-kec');
-        var aktif=$(this).attr('data-aktif');
+        $("#myModalLabel").text("UPDATE DIVISI");
+        var idDivisi=$(this).attr('data-id');
+        var namaDivisi=$(this).attr('data-divisi');
+        var namaGroupDivisi=$(this).attr('data-groupDivisi');
         //alert(namaKec);return
-        $("#idKecamatan").val(idKec);
-        $("#inpNegara").val(idNeg)
-        getProvinsi(idNeg,'edit')
-        $("#inpProvinsi").val(idProv);
-        getKota(idProv,'edit');
-        $("#inpKota").val(idKota);
-        $("#inpNamaKecamatan").val(namaKec);
-        $("#inpStatus").val(aktif);
-        $("#inpNegara").prop('disabled',true);
-        $("#inpProvinsi").prop('disabled',true);
-        $("#modaldistrict").modal('show');
+        $("#idDivisi").val(idDivisi);
+        $("#inpDivisi").val(namaDivisi);
+        $("#inpGroupDivisi").val(namaGroupDivisi);
+        $("#modaldivisi").modal('show');
     })
 
    $("#buttonSave").on("click",function(e){
         e.preventDefault();
-        var inpNegara=document.getElementById('inpNegara').value
-        var inpProvinsi=document.getElementById('inpProvinsi').value
-        var inpKota=document.getElementById('inpKota').value;
-        var idKecamatan=document.getElementById('idKecamatan').value;
-        var inpNamaKecamatan=document.getElementById('inpNamaKecamatan').value;
-        var inpStatus=document.getElementById('inpStatus').value;
+    
+        var idDivisi=document.getElementById('idDivisi').value
+        var inpDivisi=document.getElementById('inpDivisi').value
+        var inpGroupDivisi=document.getElementById('inpGroupDivisi').value
+        // console.log(inpDivisi);return
+        // console.log(inpGroupDivisi);return
+        // console.log(idDivisi);return
         //cek inputan kosong
-        if(inpNegara==''){
-            alert("Negara tidak boleh kosong");
+        if(inpDivisi==''){
+            alert("Divisi tidak boleh kosong");
             return
         }
         
-        if(inpProvinsi==''){
-            alert("Provinsi tidak boleh kosong");
+        if(inpGroupDivisi==''){
+            alert("Group Divisi tidak boleh kosong");
             return
         }
-        if(inpKota==''){
-            alert("Kota tidak boleh kosong");
-            return
-        }
-
-        if(inpNamaKecamatan==''){
-            alert("input district tidak boleh kosong");
-            $("#inpNamaKota").focus();
-            return
-        }
-
-        //console.log(inpNegara);return
-        var url="Masterdistricts/saveCRUD";
-        //console.log(inpNegara+inpProvinsi+inpNamaKota)
+        var url="Masterdivisis/saveCRUD";
+        // console.log(crud);return
         $.ajax({
             url:url,
-            data:({idKecamatan:idKecamatan,
-                inpNamaKecamatan:inpNamaKecamatan,
-                inpKota:inpKota,
-                inpProvinsi:inpProvinsi,
-                inpNegara:inpNegara,
-                inpStatus:inpStatus}),
+            data:({
+                idDivisi:idDivisi,
+                inpDivisi:inpDivisi,
+                inpGroupDivisi:inpGroupDivisi
+                }),
             type:"POST",
-            dataType:"Text",
-            success:function(returnVal){
-                //console.log(returnVal);return
-                if(returnVal=='gagal'){
-                    alert('data sudah ada');                   
-                    return
-                }
-                $('#txtNegara').val("");
-                $('#txtProvinsi').val("");
-                $('#txtKota').val("");
-                $('#txtNamaKecamatan').val("");
-                returnVal=returnVal.split("^");
-                var hal=returnVal[0];
-                if(returnVal[1]=='sukses' && !idKecamatan){
-                    alert('Data kota berhasil ditambah')
-                    $("#txtStatus").val(inpStatus);
+            // dataType:"Text",
+            success:function(result){
+                console.log(result);return
+                result=result.split("^");
+                var hal=result[0];
+                //console.log(hal);return
+                if(result[1]=='sukses' && !idDivisi){
+                    alert('Data divisi berhasil ditambah')
                     getData(hal);
-                    $("#modaldistrict").modal('hide');
-                }else if(returnVal[1]=='sukses' && idKecamatan){
-                    alert('Data kota berhasil diubah');
-                    //$("#txtStatus").val(inpStatus);
-                    //getData(hal);
+                    $("#modaldivisi").modal('hide');
+                }else if(result[1]=='sukses' && idDivisi1){
+                    alert('Data divisi berhasil diubah');
                     getData($("#setHal").val())
-                    $("#modaldistrict").modal('hide');
+                    $("#modaldivisi").modal('hide');
                 }
             }
         })

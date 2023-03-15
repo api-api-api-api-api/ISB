@@ -1,5 +1,5 @@
 <?php
-    echo $this->Html->script('h1masterdistrict.js');
+    // echo $this->Html->script('h1masterdistrict.js');
     echo $this->Html->script('h1masterdivisi.js');
     echo $this->Html->script('bundle.min.js');       
 ?>
@@ -65,7 +65,7 @@
                 <div class="panel-heading" >
                     <div class="row ">
                         <div class="col-md-2 "><label class="control-label "><i class="fa fa-th-list fa-fw"></i> RECORD LIST</label></div>
-                        <div class="col-md-10 col-md-offset-0 text-right"><button type="button" class='btn btn-danger btn-sm'  id="btnAddDistrict"><i class="fa fa-plus-circle"> </i> ADD Divisi</button></div>
+                        <div class="col-md-10 col-md-offset-0 text-right"><button type="button" class='btn btn-danger btn-sm'  id="btnAddDivisi"><i class="fa fa-plus-circle"> </i> ADD Divisi</button></div>
                     </div>
                 </div>
                 <div class="panel-body" style="overflow-x:auto; padding-top:0;padding-bottom:0;" >
@@ -97,11 +97,11 @@
 </div>
 
 <!-- Modal Form -->
-<div class="modal fade"  id="modaldistrict" role="dialog" aria-labelledby="modalCity" style="max-width: 40%; max-height: 91%; margin-left: 30%; margin-top: 2%;outline: 0;">
+<div class="modal fade"  id="modaldivisi" role="dialog" aria-labelledby="modalCity" style="max-width: 40%; max-height: 91%; margin-left: 30%; margin-top: 2%;outline: 0;">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="border-radius: 6px;min-height: unset;">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()"><span aria-hidden="true"><i class="fa fa-times-circle fa-2x" aria-hidden="true"> </i></span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle fa-2x" aria-hidden="true"> </i></span></button>
                     <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body" style="height: 700px;max-height: 700px;overflow-y:auto;">
@@ -111,48 +111,20 @@
                         <div class="col-md-12 ">
                             <div class="panel panel-default" style="min-width:500px;">
                                 <div class="panel-body">
-                                    <input type="hidden" name="idKecamatan" id="idKecamatan">
+                                    <input type="text" name="id" id="idDivisi">
                                     <!-- <p class="bg-info" style="padding: 15px;font-weight:bold;font-size:14px;" id="txtNoteReturn">test</p> -->
                                     <div class="form-horizontal">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="col-md-4 control-label">Country</label>
+                                                <label class="col-md-4 control-label">Divisi</label>
                                                 <div class="col-md-8">
-                                                    <select name="inpNegara" id="inpNegara" class="form-control" style="min-width:250px;font-size:11px;" onchange="getProvinsi(this.value,'add')">
-                                                        <option value="">choose a country or its equivalent</option>
-                                                    </select>
+                                                    <input class="form-control" type="text" id="inpDivisi" name="inpDivisi">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-4 control-label">Province </label>
+                                                <label class="col-md-4 control-label">Group Divisi</label>
                                                 <div class="col-md-8">
-                                                    <select name="inpProvinsi" id="inpProvinsi" class="form-control" style="min-width:250px;font-size:11px;" onchange="getKota(this.value,'add')">
-                                                        <option value="">choose a province or its equivalent</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">City</label>
-                                                <div class="col-md-8">
-                                                    <select name="inpKota" id="inpKota" class="form-control" style="min-width:250px;font-size:11px;">
-                                                        <option value="">choose a city or its equivalent</option>
-                                                    </select>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Enter district</label>
-                                                <div class="col-md-8">
-                                                    <input class="form-control" type="text" id="inpNamaKecamatan" name="inpNamaKecamatan"  style="min-width:200px;">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-4 control-label">Status</label>
-                                                <div class="col-md-8">
-                                                    <select name="inpStatus" id="inpStatus" class="form-control" style="min-width:250px;font-size:11px;">
-                                                        <option value="true">ACTIVE</option>
-                                                        <option value="false">NON ACTIVE</option>
-                                                    </select>
+                                                    <input class="form-control" type="text" id="inpGroupDivisi" name="inpGroupDivisi">
                                                 </div>
                                             </div>
                                         </div>

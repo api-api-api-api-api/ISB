@@ -115,8 +115,8 @@ class MasterdivisisController extends AppController {
                         <td style='vertical-align:middle;text-align:left' id='tdNamaUser".$id."' align='center'>".$data['u']['divisi']."</td>
                         <td style='vertical-align:middle;text-align:left' id='tdgroup".$id."' align='center'>".$data['u']['groupDivisi']."</td>
                         <td style= id='txtBtn".$id."' align='center'>
-                            <button type='button' class='btn btn-xs btn-default edtBtn'><i class='fa fa-edit fa-lg' style='margin: 5px 5px;'></i></button>
-                            <button type='button' class='btn btn-xs btn-default delBtn' style='display:none'><i class='fa fa-trash-o fa-lg'  style='margin: 5px 5px;'></i> </i></button>
+                            <button type='button' class='btn btn-xs btn-default edtBtn' data-id='$id' data-divisi='".$data['u']['divisi']."' data-groupDivisi='".$data['u']['groupDivisi']."'><i class='fa fa-edit fa-lg' style='margin: 5px 5px;'></i></button>
+                            <button type='button' class='btn btn-xs btn-default delBtn' data-id='$id' style='display:none;'><i class='fa fa-trash-o fa-lg'  style='margin: 5px 5px;'></i> </i></button>
                         </td>
                         <td style='display:none'>".$id."</td>
                     </tr>";
@@ -136,61 +136,38 @@ class MasterdivisisController extends AppController {
         try{
             $dataSource = $this->User->getdatasource();
             $dataSource->begin();
-            //var_dump($_POST);exit();
+            // var_dump($_POST);exit();
             
-            $idNegara=$_POST['inpNegara'];
-            $idProvinsi=$_POST["inpProvinsi"];
-            $idKota=$_POST["inpKota"];
-            $idKecamatan=$_POST['idKecamatan'];
-            $inpNamaKecamatan=$_POST['inpNamaKecamatan'];
-            $inpStatus=$_POST['inpStatus'];
-            $cek ="SELECT * FROM internationalbusiness.districts WHERE idKota='$idKota' AND namaDistrik = '$inpNamaKecamatan'";
+            // $idDivisi=$_POST['idDivisi'];
+            $inpDivisi=$_POST["inpDivisi"];
+            $inpGroupDivisi=$_POST["inpGroupDivisi"];
             //var_dump($cek);exit();
-            $qcek=$this->User->query($cek);
-            
-            if(empty($_POST["idKecamatan"])){
-                if(count($qcek)>0){
-                    echo 'gagal';
-                    exit();
-                }
-                $sql="INSERT INTO internationalbusiness.`districts` 
-                    (namaDistrik,idKota,isActive)VALUES('".strtoupper($inpNamaKecamatan)."','$idKota','$inpStatus')";
+
+            if(empty($_POST["idDivisi"])){
+                $sql="INSERT INTO internationalbusiness.`divisis` 
+                    (divisi,groupDivisi)VALUES('$inpDivisi','$inpGroupDivisi')";
                 $this->User->query($sql);
                 $sukses='sukses';
-                $querygetID=$this->User->query("SELECT m.id FROM internationalbusiness.districts  m  ORDER BY m.id DESC limit 1");
+                $querygetID=$this->User->query("SELECT m.id FROM internationalbusiness.divisis  m  ORDER BY m.id DESC limit 1");
                 $id=$querygetID[0]['m']['id'];
 
             }else{
-                $id=$_POST["idKecamatan"];
-                $ambilDataKota ="SELECT * FROM internationalbusiness.districts kec WHERE id='$id'";
-                $qcekDataKota=$this->User->query($ambilDataKota);
+                $id=$_POST["idDivisi"];
                 
-                if(strtoupper($qcekDataKota[0]['kec']['namaDistrik'])==strtoupper($inpNamaKecamatan)){
-                    $sql="UPDATE internationalbusiness.districts  SET 
-                    namaDistrik='".strtoupper($inpNamaKecamatan)."',idKota='$idKota',isActive='$inpStatus' WHERE id = '$id'";
-                    $this->User->query($sql);
-                    $sukses='sukses';
-                }else{
-                    if(count($qcek)>0){
-                        echo 'gagal';
-                        exit();
-                    }else{
-                        $sql="UPDATE internationalbusiness.districts  SET 
-                        namaDistrik='".strtoupper($inpNamaKecamatan)."',idKota='$idKota',isActive='$inpStatus' WHERE id = '$id'";
-                        $this->User->query($sql);
-                        $sukses='sukses';
-                    }
-                }
+                $sql="UPDATE internationalbusiness.divisi  SET 
+                divisi='$inpDivisi',groupDivisi='$inpGroupDivisi' WHERE id = '$id'";
+                $this->User->query($sql);
+                $sukses='sukses';
                 
             }
             $recordid=0;
-            $query=$this->User->query("SELECT * FROM internationalbusiness.districts  m WHERE  m.isActive ='$inpStatus' ORDER BY m.namaDistrik ");
-            foreach($query as $rowid){
-                $recordid ++;
-                if($rowid['m']['id']==$id){
-                    break;
+            $query=$this->User->query("SELECT * FROM internationalbusiness.divisis m  ORDER BY m.id ");
+                foreach($query as $rowid){
+                    $recordid ++;
+                    if($rowid['m']['id']==$id){
+                        break;
+                    }
                 }
-            }
             $hm=ceil($recordid/$limit); 
            
             echo $hm."^".$sukses;

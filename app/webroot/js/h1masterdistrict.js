@@ -55,20 +55,20 @@ $(document).ready(function(e){
             return
         }
         
-        if(inpProvinsi==''){
-            alert("Provinsi tidak boleh kosong");
-            return
-        }
-        if(inpKota==''){
-            alert("Kota tidak boleh kosong");
-            return
-        }
+        // if(inpProvinsi==''){
+        //     alert("Provinsi tidak boleh kosong");
+        //     return
+        // }
+        // if(inpKota==''){
+        //     alert("Kota tidak boleh kosong");
+        //     return
+        // }
 
-        if(inpNamaKecamatan==''){
-            alert("input district tidak boleh kosong");
-            $("#inpNamaKota").focus();
-            return
-        }
+        // if(inpNamaKecamatan==''){
+        //     alert("input district tidak boleh kosong");
+        //     $("#inpNamaKota").focus();
+        //     return
+        // }
 
         //console.log(inpNegara);return
         var url="Masterdistricts/saveCRUD";
@@ -84,7 +84,7 @@ $(document).ready(function(e){
             type:"POST",
             dataType:"Text",
             success:function(returnVal){
-                //console.log(returnVal);return
+                // console.log(returnVal);return
                 if(returnVal=='gagal'){
                     alert('data sudah ada');                   
                     return
