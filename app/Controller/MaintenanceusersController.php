@@ -103,9 +103,9 @@ class MaintenanceusersController extends AppController {
 
         if(empty($hm)||$hm==1){$start=0;}else{$start=($hm-1)*$limit;}
        
-        $sql="SELECT * FROM tripleadb.users u
-        LEFT JOIN tripleadb.groups g ON g.ID=u.groupId
-        LEFT JOIN tripleadb.kantorcabang c ON c.kantorCabangId=u.comId
+        $sql="SELECT * FROM users u
+        LEFT JOIN groups g ON g.ID=u.groupId
+
         WHERE u.namaUser like '%$txtNamaUserFilter%' 
         AND u.penanggungJawab like '%$txtPenanggungJawabFilter%' 
         AND g.namaGroup like '%$txtNamaGroupFilter%'
@@ -143,14 +143,14 @@ class MaintenanceusersController extends AppController {
                         <td style='vertical-align:middle;text-align:left' id='tdnamaGroup".$id."' align='center'>".$data['g']['namaGroup']."</td>
                         <td style='vertical-align:middle;text-align:left;display:none;' id='tdstatusLog".$id."' align='center'>".$data['u']['statusLog']."</td>
                         <td style='vertical-align:middle;text-align:left' id='tdpenanggungJawab".$id."' align='center'>".$data['u']['penanggungJawab']."</td>
-                        <td style='vertical-align:middle;text-align:left;' id='tdcomNama".$id."' align='center'>".$data['c']['nama']."</td>
+                        
                         <td style='vertical-align:middle;text-align:left;display:none;' id='tdcomId".$id."' align='center'>".$data['u']['comId']."</td>
                         <td style='vertical-align:middle;text-align:left;display:none;' id='tdketerangan".$id."' align='center'>".$data['u']['keterangan']."</td>
                         <td style='vertical-align:middle;text-align:left;display:none;' id='tdpejabatId".$id."' align='center'>".$data['u']['pejabatId']."</td>
                         <td style='vertical-align:middle;text-align:left;display:none;' id='tdperusahaanId".$id."' align='center'>".$data['u']['perusahaanId']."</td>
                         <td style='vertical-align:middle;text-align:left;display:none;' id='tddivisi".$id."' align='center'>".$data['u']['divisi']."</td>
-                        <td style='vertical-align:middle;text-align:center;' id='tdnik".$id."' align='center'>".$data['u']['nik']."</td>
-                        <td style='vertical-align:middle;text-align:left' id='tdnamaKary".$id."' align='center'>".$data['u']['namaKary']."</td>
+                        
+                        
                         <td style='vertical-align:middle;text-align:center' id='tdtglLahir".$id."' align='center'>".$setTglLahir."</td>
                         <td style='vertical-align:middle;text-align:left;display:none;' id='tdpword".$id."' align='center'>".$data['u']['pword']."</td>
                         <td style='vertical-align:middle;text-align:left;display:none;' id='tdidUser".$id."' align='center'>".$data['u']['idUser']."</td>

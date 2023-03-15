@@ -46,193 +46,213 @@ class PagesController extends AppController {
  *	or MissingViewException in debug mode.
  */
  	
-	public function display() {
-		$path = func_get_args();
+public function display() 
+{
+	$path = func_get_args();
 
-		$count = count($path);
-		if (!$count) {
-			return $this->redirect('/');
-		}
-		$page = $subpage = $title_for_layout = null;
-
-		if (!empty($path[0])) {
-			$page = $path[0];
-		}
-		if (!empty($path[1])) {
-			$subpage = $path[1];
-		}
-		if (!empty($path[$count - 1])) {
-			$title_for_layout = Inflector::humanize($path[$count - 1]);
-		}
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-
-		try {
-			$this->render(implode('/', $path));
-		} catch (MissingViewException $e) {
-			if (Configure::read('debug')) {
-				throw $e;
-			}
-			throw new NotFoundException();
-		}
+	$count = count($path);
+	if (!$count) {
+		return $this->redirect('/');
 	}
+	$page = $subpage = $title_for_layout = null;
+
+	if (!empty($path[0])) {
+		$page = $path[0];
+	}
+	if (!empty($path[1])) {
+		$subpage = $path[1];
+	}
+	if (!empty($path[$count - 1])) {
+		$title_for_layout = Inflector::humanize($path[$count - 1]);
+	}
+	$this->set(compact('page', 'subpage', 'title_for_layout'));
+
+	try {
+		$this->render(implode('/', $path));
+	} catch (MissingViewException $e) {
+		if (Configure::read('debug')) {
+			throw $e;
+		}
+		throw new NotFoundException();
+	}
+}
 	
-	public function getSetting(){
-		$this->autoRender = false;
-		$this->loadModel('Setting');
-		$rsSetting=$this->Setting->query("Select * from settings");
-		echo $rsSetting[0]["settings"]["headerText"]."!".$this->webroot."img/".$rsSetting[0]["settings"]["logo"];
-		
-	}	
-	public function cekDokter(){
-				$this->autoRender = false;
-		header('Access-Control-Allow-Origin: *');
+public function getSetting()
+{
+	$this->autoRender = false;
+	$this->loadModel('Setting');
+	$rsSetting=$this->Setting->query("Select * from settings");
+	echo $rsSetting[0]["settings"]["headerText"]."!".$this->webroot."img/".$rsSetting[0]["settings"]["logo"];
+}	
 
-header('Access-Control-Allow-Methods: GET, POST');
+public function cekDokter()
+{
+	$this->autoRender = false;
+	header('Access-Control-Allow-Origin: *');
 
-header("Access-Control-Allow-Headers: X-Requested-With");
-		$jenis=$_GET['jenis'];
-		$dokterId=$_GET['dokterId'];
-		$dokterId=rtrim($dokterId,",");
-		$dokterIdPecah=explode(",",$dokterId);
+	header('Access-Control-Allow-Methods: GET, POST');
+
+	header("Access-Control-Allow-Headers: X-Requested-With");
+
+	$jenis=$_GET['jenis'];
+	$dokterId=$_GET['dokterId'];
+	$dokterId=rtrim($dokterId,",");
+	$dokterIdPecah=explode(",",$dokterId);
 		
-			$dokterId="";
-foreach($dokterIdPecah as $dp){
-	if(trim($dp)!=''){
-	$dokterId.="'".$dp."',";}
+	$dokterId="";
+
+	foreach($dokterIdPecah as $dp){
+		if(trim($dp)!=''){
+		$dokterId.="'".$dp."',";}
 	}
+
 	$dokterId=substr($dokterId,0,strlen($dokterId)-1);
-		$dokterId=rtrim($dokterId,",");
-		$dokterIdPecah2=explode(",",$dokterId);
-			$jml=count($dokterIdPecah2);
-		$this->autoRender = false;
-		$this->loadModel('Bernofarmpengirimandana');
-			$rsCek1=$this->Bernofarmpengirimandana->query("SELECT DISTINCT bernofarmdokter.id FROM  bernodb.bernofarmdokter WHERE  bernodb.bernofarmdokter.id IN ($dokterId)");
+	$dokterId=rtrim($dokterId,",");
+	$dokterIdPecah2=explode(",",$dokterId);
+	$jml=count($dokterIdPecah2);
+	$this->autoRender = false;
+	$this->loadModel('Bernofarmpengirimandana');
+	$rsCek1=$this->Bernofarmpengirimandana->query("SELECT DISTINCT bernofarmdokter.id FROM  bernodb.bernofarmdokter WHERE  bernodb.bernofarmdokter.id IN ($dokterId)");
 		
 	//echo "SELECT * FROM matc_outlets WHERE CONCAT(comid,outid) IN ($outlet)";exit();
-		if(count($rsCek1)<$jml){echo "Ada yg bukan id dokter";}
-		else{
+	if(count($rsCek1)<$jml){echo "Ada yg bukan id dokter";}
+	else{
 		
-			$rsCek=$this->Bernofarmpengirimandana->query("SELECT distinct bernofarmdokter.id FROM bernodb.bernofarmdokter 
-INNER JOIN bernodb.specdokterkpdm ON bernodb.bernofarmdokter.`spec`=bernodb.specdokterkpdm.`spec`
-WHERE bernodb.bernofarmdokter.id IN ($dokterId)");
-		if($jenis=='KPDM'){
-			if(count($rsCek)<$jml){echo "Tidak sesuai";}
-			else{echo "Sesuai";}
-			}
-		else{
-			if(count($rsCek)==0){echo "Sesuai";}
-			else{echo "Tidak sesuai";}
-			}
+		$rsCek=$this->Bernofarmpengirimandana->query("SELECT distinct bernofarmdokter.id FROM bernodb.bernofarmdokter 
+		INNER JOIN bernodb.specdokterkpdm ON bernodb.bernofarmdokter.`spec`=bernodb.specdokterkpdm.`spec`
+		WHERE bernodb.bernofarmdokter.id IN ($dokterId)");
+	if($jenis=='KPDM'){
+		if(count($rsCek)<$jml){echo "Tidak sesuai";}
+		else{echo "Sesuai";}
 		}
+	else{
+		if(count($rsCek)==0){echo "Sesuai";}
+		else{echo "Tidak sesuai";}
 		}
-		public function cekOutlet(){
-					$this->autoRender = false;
-		header('Access-Control-Allow-Origin: *');
+	}
+}
 
-header('Access-Control-Allow-Methods: GET, POST');
+public function cekOutlet()
+{
+	$this->autoRender = false;
+	header('Access-Control-Allow-Origin: *');
 
-header("Access-Control-Allow-Headers: X-Requested-With");
-		$outlet=$_GET['outlet'];
+	header('Access-Control-Allow-Methods: GET, POST');
+
+	header("Access-Control-Allow-Headers: X-Requested-With");
+	$outlet=$_GET['outlet'];
 		
-		if(substr(trim($outlet), -1, 1)==","){
-		$outlet=substr(trim($outlet),0,strlen(trim($outlet))-1);}
+	if(substr(trim($outlet), -1, 1)==","){
+	$outlet=substr(trim($outlet),0,strlen(trim($outlet))-1);}
 	$outletPecah=explode(",",$outlet);
 	$jml=count($outletPecah);
 	$outlet="";
-foreach($outletPecah as $op){
-	$outlet.="'".$op."',";
+
+	foreach($outletPecah as $op){
+		$outlet.="'".$op."',";
 	}
 	$outlet=substr($outlet,0,strlen($outlet)-1);
 
-		$this->autoRender = false;
-		$this->loadModel('User');
+	$this->autoRender = false;
+	$this->loadModel('User');
+
+	$outletTidakAda='';
+	$rsCek=$this->User->query("SELECT DISTINCT comid,outid FROM mastersektors mastersektorbrneths WHERE CONCAT(comid,outid) IN ($outlet)");
+	$outletPecah=explode(",",$outlet);
+	for($k=0;$k<count($outletPecah);$k++){
+		$ada='';
+		foreach($rsCek as $dataCek){
+			
+			if($outletPecah[$k]=="'".$dataCek['mastersektorbrneths']['comid'].$dataCek['mastersektorbrneths']['outid']."'"){
+				$ada='ada';
+			break;
+			}
+			else{
+			
+			}
+		}
+		if($ada==''){
+			$outletTidakAda.=$outletPecah[$k].",";
+		}
+	}
+	$outletTidakAda=substr($outletTidakAda,0,strlen($outletTidakAda)-1);
+			
+	//echo "SELECT * FROM matc_outlets WHERE CONCAT(comid,outid) IN ($outlet)";exit();
+	if(count($rsCek)<$jml){echo "Tidak sesuai";}
+	else{echo "Sesuai";}	
+}
+
+public function getNamaOutlet()
+{
+	$this->autoRender = false;
+	header('Access-Control-Allow-Origin: *');
+
+	header('Access-Control-Allow-Methods: GET, POST');
+
+	header("Access-Control-Allow-Headers: X-Requested-With");
+	$comId=$_GET['comId'];$outId=$_GET['outId'];
+	$this->autoRender = false;
+	$this->loadModel('User');
+	$outletTidakAda='';
+	$rsCek=$this->User->query("SELECT distinct outlet,alamat FROM mastersektors mastersektorbrneths WHERE comId='".$comId."' and outId='".$outId."'");
+	$outletPecah=explode(",",$outlet);
 	
-			$outletTidakAda='';
-			$rsCek=$this->User->query("SELECT DISTINCT comid,outid FROM mastersektors mastersektorbrneths WHERE CONCAT(comid,outid) IN ($outlet)");
-			$outletPecah=explode(",",$outlet);
-			for($k=0;$k<count($outletPecah);$k++){
-				$ada='';
-				foreach($rsCek as $dataCek){
-					
-					if($outletPecah[$k]=="'".$dataCek['mastersektorbrneths']['comid'].$dataCek['mastersektorbrneths']['outid']."'"){
-						$ada='ada';
-						break;
-						}
-						else{
-						
-						}
-					}
-					if($ada==''){
-						$outletTidakAda.=$outletPecah[$k].",";
-						}
-				}
-				$outletTidakAda=substr($outletTidakAda,0,strlen($outletTidakAda)-1);
-			
-	//echo "SELECT * FROM matc_outlets WHERE CONCAT(comid,outid) IN ($outlet)";exit();
-			if(count($rsCek)<$jml){echo "Tidak sesuai";}
-			else{echo "Sesuai";}
-		
-		
-		}	
-public function getNamaOutlet(){
-			$this->autoRender = false;
-		header('Access-Control-Allow-Origin: *');
+	if(count($rsCek)>0)
+	{
+		echo "Sesuai~!~".$rsCek[0]['mastersektorbrneths']['outlet'].' '.$rsCek[0]['mastersektorbrneths']['alamat']."~!~".$rsCek[0]['mastersektorbrneths']['outlet'];
+	}
+	else
+	{
+		echo "Tidak sesuai~!~";
+	}
+	exit();
 
-header('Access-Control-Allow-Methods: GET, POST');
-
-header("Access-Control-Allow-Headers: X-Requested-With");
-		$comId=$_GET['comId'];$outId=$_GET['outId'];
-			$this->autoRender = false;
-		$this->loadModel('User');
-			$outletTidakAda='';
-			$rsCek=$this->User->query("SELECT distinct outlet,alamat FROM mastersektors mastersektorbrneths WHERE comId='".$comId."' and outId='".$outId."'");
-			$outletPecah=explode(",",$outlet);
-			
-				if(count($rsCek)>0){
-						echo "Sesuai~!~".$rsCek[0]['mastersektorbrneths']['outlet'].' '.$rsCek[0]['mastersektorbrneths']['alamat']."~!~".$rsCek[0]['mastersektorbrneths']['outlet'];
-						
-						}
-						else{
-						echo "Tidak sesuai~!~";
-						}
-					exit();
-		if(substr(trim($outlet), -1, 1)==","){
-		$outlet=substr(trim($outlet),0,strlen(trim($outlet))-1);}
+	if(substr(trim($outlet), -1, 1)==",")
+	{
+		$outlet=substr(trim($outlet),0,strlen(trim($outlet))-1);
+	}
 	$outletPecah=explode(",",$outlet);
 	$jml=count($outletPecah);
 	$outlet="";
-	var_dump($outletPecah);exit();
-foreach($outletPecah as $op){
-	$outlet.="'".$op."',";
+	var_dump($outletPecah);
+	exit();
+
+	foreach($outletPecah as $op)
+	{
+		$outlet.="'".$op."',";
 	}
 	$outlet=substr($outlet,0,strlen($outlet)-1);
 
-		$this->autoRender = false;
-		$this->loadModel('User');
-			$outletTidakAda='';
-			$rsCek=$this->User->query("SELECT distinct nama_outlet,alamat FROM mastersektors mastersektorbrneths WHERE CONCAT(comid,outid) IN ($outlet)");
-			$outletPecah=explode(",",$outlet);
-			for($k=0;$k<count($outletPecah);$k++){
-				$ada='';
-				foreach($rsCek as $dataCek){
-					
-					if($outletPecah[$k]=="'".$dataCek['mastersektorbrneths']['comid'].$dataCek['mastersektorbrneths']['outid']."'"){
-						echo "Sesuai~!~".$dataCek['mastersektorbrneths']['nama_outlet'].$dataCek['mastersektorbrneths']['alamat'];
-						break;
-						}
-						else{
-						echo "Tidak sesuai~!~";
-						}
-					}
-					if($ada==''){
-						$outletTidakAda.=$outletPecah[$k].",";
-						}
+	$this->autoRender = false;
+	$this->loadModel('User');
+	$outletTidakAda='';
+	$rsCek=$this->User->query("SELECT distinct nama_outlet,alamat FROM mastersektors mastersektorbrneths WHERE CONCAT(comid,outid) IN ($outlet)");
+	$outletPecah=explode(",",$outlet);
+	for($k=0;$k<count($outletPecah);$k++)
+	{
+		$ada='';
+		foreach($rsCek as $dataCek)
+		{
+			if($outletPecah[$k]=="'".$dataCek['mastersektorbrneths']['comid'].$dataCek['mastersektorbrneths']['outid']."'")
+			{
+				echo "Sesuai~!~".$dataCek['mastersektorbrneths']['nama_outlet'].$dataCek['mastersektorbrneths']['alamat'];
+				break;
 				}
-				$outletTidakAda=substr($outletTidakAda,0,strlen($outletTidakAda)-1);
-			
-	//echo "SELECT * FROM matc_outlets WHERE CONCAT(comid,outid) IN ($outlet)";exit();
-			if(count($rsCek)<$jml){echo "Tidak sesuai~!~";}
-			else{echo "Sesuai~!~".$dataCek['mastersektorbrneths']['nama_outlet']." ".$dataCek['mastersektorbrneths']['alamat']."~!~".$dataCek['mastersektorbrneths']['nama_outlet'];}
+				else{
+				echo "Tidak sesuai~!~";
+			}
+		}
+
+		if($ada=='')
+		{
+			$outletTidakAda.=$outletPecah[$k].",";
+		}
+	}
+	$outletTidakAda=substr($outletTidakAda,0,strlen($outletTidakAda)-1);
+		
+//echo "SELECT * FROM matc_outlets WHERE CONCAT(comid,outid) IN ($outlet)";exit();
+	if(count($rsCek)<$jml){echo "Tidak sesuai~!~";}
+	else{echo "Sesuai~!~".$dataCek['mastersektorbrneths']['nama_outlet']." ".$dataCek['mastersektorbrneths']['alamat']."~!~".$dataCek['mastersektorbrneths']['nama_outlet'];}
 		
 		
 		}		
